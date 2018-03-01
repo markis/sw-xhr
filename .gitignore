@@ -1,0 +1,13 @@
+.DS_Store
+built/
+coverage/
+node_modules/
+tmp/
+.idea/
+.vscode/
+/index.js
+/index.d.ts
+/test.js
+/test-file.min.js
+/cli.js
+*.map

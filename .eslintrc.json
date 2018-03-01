@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": false,
+    "commonjs": true,
+    "es6": false,
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "quotes": ["error", "single", {"avoidEscape": true}]
+  }
+}

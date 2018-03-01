@@ -1,0 +1,30 @@
+# Test against all the major supported versions of node
+environment:
+  matrix:
+    - nodejs_version: '4'
+    - nodejs_version: '5'
+    - nodejs_version: '6'
+    - nodejs_version: '7'
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+
+  # unit tests
+  - npm test
+
+  # integration tests
+  - npm run build:cli
+  - node ./cli.js --input ./test/test-file.js --output ./test/test-file.min.js
+
+# Don't actually build.
+build: off
