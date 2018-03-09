@@ -1,6 +1,6 @@
 {
   "name": "sw-xhr",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Polyfill XMLHttpRequest api with fetch",
   "main": "index.js",
   "scripts": {
