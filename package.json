@@ -40,6 +40,7 @@
   "homepage": "https://github.com/markis/sw-xhr#readme",
   "devDependencies": {
     "@types/fetch-mock": "6.0.0",
+    "@types/node-fetch": "^1.6.7",
     "fetch-mock": "6.0.1",
     "istanbul": "0.4.5",
     "node-fetch": "2.0.0",
@@ -47,8 +48,5 @@
     "rollup-plugin-typescript": "0.8.1",
     "tslint": "5.8.0",
     "typescript": "2.7.2"
-  },
-  "dependencies": {
-    "@types/node-fetch": "^1.6.7"
   }
 }
