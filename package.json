@@ -1,25 +1,23 @@
 {
-  "name": "xhr-fetch-polyfill",
+  "name": "sw-xhr",
   "version": "0.0.1",
   "description": "Polyfill XML Http Request api with fetch",
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm test && npm run build",
     "lint": "tslint -c tslint.json ./src/**/*.ts",
-    "pretest": "npm run build:test",
+    "pretest": "npm run build",
     "test": "npm run test:coverage",
     "posttest": "npm run lint",
     "test:unit": "node test.js",
     "test:coverage": "istanbul cover test.js",
-    "build": "npm run build:ts && npm run build:index && npm run build:declarations",
-    "build:ts": "tsc --outDir ./built --declaration",
-    "build:declarations": "mv built/src/index.d.ts ./index.d.ts",
-    "build:index": "rollup -c -o index.js -i src/index.ts",
-    "build:test": "rollup -c -o test.js -i test/index.ts"
+    "prebuild": "tsc --outDir ./built --declaration",
+    "build": "rollup -c",
+    "postbuild": "mv built/src/index.d.ts ./index.d.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/markis/xhr-fetch-polyfill.git"
+    "url": "git+ssh://git@github.com/markis/sw-xhr.git"
   },
   "files": [
     "index.d.ts",
@@ -31,22 +29,26 @@
   "keywords": [
     "whitespace",
     "strings",
-    "xhr-fetch-polyfill",
+    "sw-xhr",
     "minification"
   ],
   "author": "Markis Taylor <m@rkis.cc>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/markis/xhr-fetch-polyfill/issues"
+    "url": "https://github.com/markis/sw-xhr/issues"
   },
-  "homepage": "https://github.com/markis/xhr-fetch-polyfill#readme",
-  "dependencies": {
-    "typescript": "2.7.2"
-  },
+  "homepage": "https://github.com/markis/sw-xhr#readme",
   "devDependencies": {
+    "@types/fetch-mock": "6.0.0",
+    "fetch-mock": "6.0.1",
     "istanbul": "0.4.5",
+    "node-fetch": "2.0.0",
     "rollup": "0.56.2",
     "rollup-plugin-typescript": "0.8.1",
-    "tslint": "5.8.0"
+    "tslint": "5.8.0",
+    "typescript": "2.7.2"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^1.6.7"
   }
 }

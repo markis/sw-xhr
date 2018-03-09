@@ -1,6 +1,6 @@
-import XMLHttpRequestPolyfillBase from './base';
+import XMLHttpRequestPolyfilleEvents from './events';
 
-export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfillBase implements XMLHttpRequest {
+export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfilleEvents implements XMLHttpRequest {
   private aborted: boolean = false;
   private request?: Request;
   private responseHeaders?: Headers;
@@ -44,14 +44,16 @@ export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfillBase i
 
     this.request.headers.append(header, value);
   }
-  public send(data?: any) {
+  public send(data?: any): void {
     if (!this.request) {
       throw Error();
     }
 
-    this.request = new Request(this.request, {
-      body: data,
-    });
+    if (data) {
+      this.request = new Request(this.request, {
+        body: data,
+      });
+    }
 
     this.readyState = this.LOADING;
     this.onreadystatechange(new Event('readystatechange'));

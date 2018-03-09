@@ -6,6 +6,7 @@ tmp/
 .idea/
 .vscode/
 /index.js
+/index.es.js
 /index.d.ts
 /test.js
 /test-file.min.js
