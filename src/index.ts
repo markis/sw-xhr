@@ -55,6 +55,12 @@ export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfilleEvent
       });
     }
 
+    if (this.withCredentials) {
+      this.request = new Request(this.request, {
+        credentials: 'include'
+      });
+    }
+
     this.readyState = this.LOADING;
     this.onreadystatechange(new Event('readystatechange'));
 
