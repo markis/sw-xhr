@@ -12,7 +12,7 @@ export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfilleEvent
     let result = '';
     if (this.responseHeaders) {
       this.responseHeaders.forEach((value, name) => {
-        result += `${ name }: ${ value }`;
+        result += `${ name }: ${ value }\r\n`;
       });
     }
     return result;
