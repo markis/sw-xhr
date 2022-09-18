@@ -12,7 +12,7 @@ export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfilleEvent
     let result = '';
     if (this.responseHeaders) {
       this.responseHeaders.forEach((value, name) => {
-        result += `${ name }: ${ value }`;
+        result += `${ name }: ${ value }\r\n`;
       });
     }
     return result;
@@ -52,6 +52,12 @@ export default class XMLHttpRequestPolyfill extends XMLHttpRequestPolyfilleEvent
     if (data) {
       this.request = new Request(this.request, {
         body: data,
+      });
+    }
+
+    if (this.withCredentials) {
+      this.request = new Request(this.request, {
+        credentials: 'include'
       });
     }
 
